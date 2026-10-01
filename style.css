@@ -1,0 +1,314 @@
+/* =====================================================
+   GLOBAL & TYPOGRAPHY (clamp)
+   ===================================================== */
+.title-clamp {
+  font-size: clamp(1.5rem, 4vw + 1rem, 3rem);
+  line-height: 1.2;
+}
+.subtitle-clamp {
+  font-size: clamp(0.9rem, 1.5vw + 0.5rem, 1.15rem);
+}
+.price-clamp {
+  font-size: clamp(1rem, 2vw + 0.5rem, 1.5rem);
+}
+
+/* =====================================================
+   NAVBAR
+   ===================================================== */
+.navbar { transition: box-shadow 0.3s ease; }
+.nav-link { color: #374151; transition: color 0.25s ease; cursor: pointer; }
+.nav-link:hover { color: #db2777; }
+.nav-mobile.flex { display: flex; }
+
+.cart-btn {
+  color: #db2777;
+  padding: 4px;
+  border-radius: 8px;
+  transition: background 0.25s ease, transform 0.2s ease;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+.cart-btn:hover {
+  background: #fce7f3;
+  transform: scale(1.05);
+}
+
+.cart-badge {
+  min-width: 1.25rem;
+  height: 1.25rem;
+  line-height: 1;
+  transition: transform 0.25s ease;
+}
+.cart-badge.bump { animation: bump 0.4s ease; }
+@keyframes bump {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.4); }
+  100% { transform: scale(1); }
+}
+
+/* =====================================================
+   HERO
+   ===================================================== */
+.hero {
+  background: linear-gradient(135deg, #fce7f3 0%, #ede9fe 100%);
+}
+
+/* =====================================================
+   FILTER KATEGORI
+   ===================================================== */
+.filter-bar { gap: 0.5rem; }
+
+.filter-btn {
+  padding: 0.5rem 1.25rem;
+  border-radius: 999px;
+  border: 2px solid #f9a8d4;
+  background: #fff;
+  color: #db2777;
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+.filter-btn:hover {
+  background: #fce7f3;
+  transform: translateY(-2px);
+}
+.filter-btn.active {
+  background: #db2777;
+  color: #fff;
+  border-color: #db2777;
+  box-shadow: 0 4px 12px rgba(219, 39, 119, 0.3);
+}
+
+/* =====================================================
+   PRODUCT CARD
+   ===================================================== */
+.product-card {
+  background: #fff;
+  border-radius: 1rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(219, 39, 119, 0.15);
+}
+
+.product-card img {
+  width: 100%;
+  height: 12rem;
+  object-fit: cover;
+  display: block;
+  background: #fce7f3;
+}
+
+.product-card .card-body {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.product-card h3 {
+  font-weight: 600;
+  font-size: 1.125rem;
+}
+.product-card .desc {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin-top: 0.25rem;
+  flex: 1;
+}
+.product-card .price {
+  color: #db2777;
+  font-weight: 700;
+  margin-top: 0.75rem;
+}
+.product-card .btn-buy {
+  margin-top: 0.75rem;
+  background: #db2777;
+  color: #fff;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.25s ease, transform 0.2s ease;
+}
+.product-card .btn-buy:hover { background: #be185d; }
+.product-card .btn-buy:active { transform: scale(0.97); }
+
+/* Filter show/hide */
+.product-card.hidden-card { display: none; }
+.product-card.fade-in { animation: fadeUp 0.4s ease forwards; }
+
+/* =====================================================
+   FOOTER
+   ===================================================== */
+.footer { background: #db2777; }
+
+/* =====================================================
+   ANIMASI CARD
+   ===================================================== */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.product-card { animation: fadeUp 0.5s ease forwards; }
+
+/* =====================================================
+   CART SIDEBAR
+   ===================================================== */
+.cart-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 60;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.cart-overlay.show { opacity: 1; pointer-events: auto; }
+
+.cart-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  max-width: 380px;
+  background: #fff;
+  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15);
+  z-index: 70;
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+}
+.cart-panel.show { transform: translateX(0); }
+
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid #fce7f3;
+}
+
+.cart-items {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem 1.25rem;
+}
+
+.cart-item {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #f3f4f6;
+}
+.cart-item img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  flex-shrink: 0;
+  background: #fce7f3;
+}
+.cart-item-info { flex: 1; min-width: 0; }
+.cart-item-info h4 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 0.2rem;
+}
+.cart-item-info .cart-price {
+  font-size: 0.85rem;
+  color: #db2777;
+  font-weight: 700;
+}
+
+.qty-control {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.4rem;
+}
+.qty-control button {
+  width: 24px;
+  height: 24px;
+  border: 1px solid #f9a8d4;
+  background: #fff;
+  color: #db2777;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 700;
+  line-height: 1;
+  transition: background 0.2s ease;
+}
+.qty-control button:hover { background: #fce7f3; }
+.qty-control span {
+  font-size: 0.85rem;
+  font-weight: 600;
+  min-width: 20px;
+  text-align: center;
+}
+
+.btn-remove {
+  background: transparent;
+  border: none;
+  color: #ef4444;
+  font-size: 0.75rem;
+  cursor: pointer;
+  margin-top: 0.25rem;
+  padding: 0;
+}
+.btn-remove:hover { text-decoration: underline; }
+
+.cart-empty {
+  text-align: center;
+  color: #9ca3af;
+  font-size: 0.9rem;
+  padding: 2rem 0;
+}
+
+.cart-footer {
+  padding: 1rem 1.25rem;
+  border-top: 1px solid #fce7f3;
+  background: #fff;
+}
+
+@media (max-width: 400px) {
+  .cart-panel { max-width: 100%; }
+}
+
+/* =====================================================
+   TOAST NOTIFIKASI
+   ===================================================== */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: #db2777;
+  color: #fff;
+  padding: 0.65rem 1.25rem;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  box-shadow: 0 10px 25px rgba(219, 39, 119, 0.35);
+  opacity: 0;
+  z-index: 100;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  white-space: nowrap;
+  max-width: 90vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
